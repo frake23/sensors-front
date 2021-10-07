@@ -3,7 +3,6 @@ import './App.css'
 import {AppBar, Box, Container, Grid, Input, Select, TextField, Toolbar, Typography} from "@mui/material";
 import {LineChart, CartesianGrid, Line, XAxis, YAxis, ResponsiveContainer} from "recharts";
 import SelectInput from "@mui/material/Select/SelectInput";
-import usePoints from './usePoints';
 
 function App() {
 
