@@ -1,7 +1,8 @@
 import {useState} from 'react'
 import './App.css'
-import {AppBar, Box, Container, Toolbar, Typography} from "@mui/material";
+import {AppBar, Box, Container, Grid, Input, Select, TextField, Toolbar, Typography} from "@mui/material";
 import {LineChart, CartesianGrid, Line, XAxis, YAxis, ResponsiveContainer} from "recharts";
+import SelectInput from "@mui/material/Select/SelectInput";
 
 function App() {
 
@@ -25,7 +26,16 @@ function App() {
                             <YAxis />
                         </LineChart>
                     </ResponsiveContainer>
-
+                    <Grid container spacing={4} justifyItems={"center"}>
+                        <Grid item xs={3}><TextField label="min x"/></Grid>
+                        <Grid item xs={3}><TextField label="min y"/></Grid>
+                        <Grid item xs={3}><TextField label="quantity"/></Grid>
+                        <Grid item xs={3}><TextField label="sleep"/></Grid>
+                        <Grid item xs={3}><TextField label="max x"/></Grid>
+                        <Grid item xs={3}><TextField label="max y"/></Grid>
+                        <Grid item xs={3}><TextField label="sleep"/></Grid>
+                        <Grid item xs={3}><TextField label=""/></Grid>
+                    </Grid>
                 </Box>
             </Container>
         </>
