@@ -1,6 +1,18 @@
 import {useState} from 'react'
 import './App.css'
-import {AppBar, Box, Container, Grid, Input, Select, TextField, Toolbar, Typography} from "@mui/material";
+import {
+    AppBar,
+    Box, Button,
+    Container, FormControl,
+    Grid,
+    Input, InputLabel,
+    MenuItem,
+    Select,
+    Stack,
+    TextField,
+    Toolbar,
+    Typography
+} from "@mui/material";
 import {LineChart, CartesianGrid, Line, XAxis, YAxis, ResponsiveContainer} from "recharts";
 import SelectInput from "@mui/material/Select/SelectInput";
 
@@ -26,16 +38,27 @@ function App() {
                             <YAxis />
                         </LineChart>
                     </ResponsiveContainer>
-                    <Grid container spacing={4} justifyItems={"center"}>
-                        <Grid item xs={3}><TextField label="min x"/></Grid>
-                        <Grid item xs={3}><TextField label="min y"/></Grid>
-                        <Grid item xs={3}><TextField label="quantity"/></Grid>
-                        <Grid item xs={3}><TextField label="sleep"/></Grid>
-                        <Grid item xs={3}><TextField label="max x"/></Grid>
-                        <Grid item xs={3}><TextField label="max y"/></Grid>
-                        <Grid item xs={3}><TextField label="sleep"/></Grid>
-                        <Grid item xs={3}><TextField label=""/></Grid>
-                    </Grid>
+                    <Stack spacing={3}>
+                        <Stack direction="row" spacing={3}>
+                            <TextField label="Минимум x"/>
+                            <TextField label="Максимум x"/>
+                            <TextField label="Количество точек"/>
+                            <TextField label="Интервал передачи"/>
+                        </Stack>
+                        <Stack direction="row" spacing={3}>
+                            <TextField label="Минимум y"/>
+                            <TextField label="Максимум y"/>
+                            <FormControl sx={{flexGrow: 1}}>
+                                <InputLabel id="select-random">Характер случайности</InputLabel>
+                                <Select labelId="select-random" label="Характер случайности">
+                                    <MenuItem value="uniform">Uniform</MenuItem>
+                                    <MenuItem value="smart">Smart</MenuItem>
+                                </Select>
+                            </FormControl>
+                            <Button variant="contained" color="primary" sx={{paddingX: "60px"}}>Начать!</Button>
+                        </Stack>
+                    </Stack>
+
                 </Box>
             </Container>
         </>
