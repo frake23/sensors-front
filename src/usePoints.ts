@@ -3,7 +3,6 @@ import {io} from 'socket.io-client';
 import {toast} from 'react-toastify'
 
 const socket = io(import.meta.env.BASE_URL);
-
 interface GeneratePointsData {
     quantity: number,
     sleep: number,
