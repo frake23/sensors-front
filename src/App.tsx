@@ -14,10 +14,11 @@ import {
     Typography
 } from "@mui/material";
 import {LineChart, CartesianGrid, Line, XAxis, YAxis, ResponsiveContainer} from "recharts";
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import {Controller, useForm} from 'react-hook-form';
 import usePoints from './usePoints';
 import { TextInput, SelectInput } from './Input';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
     const {control, handleSubmit} = useForm();
