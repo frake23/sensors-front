@@ -11,7 +11,7 @@ export interface GeneratePointsData {
     minY: number, maxY: number
 }
 
-const connPromise = new Promise((resolve) => {
+const connPromise = () => new Promise((resolve) => {
     socket.once('connect', () => resolve(socket))
 })
 
