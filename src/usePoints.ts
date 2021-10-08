@@ -3,7 +3,7 @@ import {io} from 'socket.io-client';
 import {toast} from 'react-toastify'
 
 const socket = io('https://sensors-back.herokuapp.com/');
-interface GeneratePointsData {
+export interface GeneratePointsData {
     quantity: number,
     sleep: number,
     randomType: 'uniform' | 'smart',

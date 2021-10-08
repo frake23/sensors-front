@@ -15,7 +15,7 @@ import {
 import {CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis} from "recharts";
 import {ToastContainer} from 'react-toastify';
 import {useForm} from 'react-hook-form';
-import usePoints from './usePoints';
+import usePoints, { GeneratePointsData } from './usePoints';
 import {SelectInput, TextInput} from './Input';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -43,7 +43,11 @@ function App() {
                             <YAxis/>
                         </LineChart>
                     </ResponsiveContainer>
-                    <form onSubmit={handleSubmit((values: any) => { setAnimationDuration(values.sleep * 1000 || 1000); generatePoints(values) })}>
+                    <form onSubmit={handleSubmit((values: any) => { 
+                        console.log(values)
+                        setAnimationDuration(values.sleep * 1000 || 1000); 
+                        generatePoints(Object.keys(values).filter((k) => !!values[k]).reduce((a, k) => ({ ...a, [k]: values[k] }), {}) as GeneratePointsData);
+                    })}>
                         <Stack spacing={3}>
                             <Stack direction="row" spacing={3}>
                                 <TextInput label="Минимум х" name="min_x" control={control}/>
