@@ -16,7 +16,7 @@ export function TextInput({ control, name, label }: Props) {
   } = useController({
     name,
     control,
-    rules: { required: true },
+    rules: { required: false },
     defaultValue: "",
   });
 
@@ -31,8 +31,9 @@ export function SelectInput({ control, name, children, label }: Props & {childre
     } = useController({
       name,
       control,
-      rules: { required: true },
+      rules: { required: false },
       defaultValue: "",
+      
     });
   
     return <Select {...inputProps} inputRef={ref} label={label}>{children}</Select>;
