@@ -11,16 +11,24 @@ interface GeneratePointsData {
     minY: number, maxY: number
 }
 
+const connPromise = new Promise((resolve) => {
+    socket.once('connect', () => resolve(socket))
+})
+
 export default function usePoints() {
     const [points, setPoints] = useState<{x: number, y: number}[]>([]);
+    useEffect(() => {
+        toast.promise(connPromise, {
+            pending: 'Подключение к серверу',
+            error: 'Ошибка подключения',
+            success: 'Подключено к серверу'
+        })
+    }, []);
     const generatePoints = (data: GeneratePointsData) => socket.emit('generate_points', data);
     useEffect(() => {
         socket.on('new_point', point => {
             setPoints(points => [...points, point])
         });
-        socket.on('connect', () => toast.success('Подключение к серверу установлено'));
-        socket.on('disconnect', () => toast.error('Подключение к серверу оборвалось'));
-        socket.on('reconnect', () => toast.loading('Переподключение к серверу'))
     }, []);
 
     return {points, generatePoints}
