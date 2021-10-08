@@ -22,6 +22,6 @@ export default function usePoints() {
         socket.on('disconnect', () => toast.error('Подключение к серверу оборвалось'));
         socket.on('reconnect', () => toast.loading('Переподключение к серверу'))
     }, []);
-
-    return {points, generatePoints}
+    const dropPoints = () => setPoints([])
+    return {points, generatePoints, dropPoints}
 }
