@@ -7,8 +7,8 @@ export interface GeneratePointsData {
     quantity: number,
     sleep: number,
     randomType: 'uniform' | 'smart',
-    minX: number, maxX: number,
-    minY: number, maxY: number
+    min_x: number, max_x: number,
+    min_y: number, max_y: number
 }
 
 const connPromise = () => new Promise((resolve) => {
