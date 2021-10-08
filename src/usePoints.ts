@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import {io} from 'socket.io-client';
 import {toast} from 'react-toastify'
 
-const socket = io(import.meta.env.BASE_URL);
+const socket = io('https://sensors-back.herokuapp.com/');
 interface GeneratePointsData {
     quantity: number,
     sleep: number,
