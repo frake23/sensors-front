@@ -30,6 +30,6 @@ export default function usePoints() {
             setPoints(points => [...points, point])
         });
     }, []);
-
-    return {points, generatePoints}
+    const dropPoints = () => setPoints([])
+    return {points, generatePoints, dropPoints}
 }

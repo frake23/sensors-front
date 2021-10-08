@@ -21,8 +21,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
     const {control, handleSubmit} = useForm();
-    const {points, generatePoints} = usePoints();
-    const [animationDuration, setAnimationDuration] = useState(1000)
+    const {points, generatePoints, dropPoints} = usePoints();
     return (
         <>
             <AppBar position="sticky">
@@ -37,16 +36,16 @@ function App() {
                     <Typography variant="h3" textAlign="center">Поле для вывода графиков</Typography>
                     <ResponsiveContainer width="100%" height={400} minWidth={200}>
                         <LineChart data={points} margin={{top: 40, right: 30, left: 0, bottom: 0}}>
-                            <Line type="monotone" dataKey="y" stroke="#8884d8" animationDuration={animationDuration} isAnimationActive={false}/>
+                            <Line type="monotone" dataKey="y" stroke="#8884d8" isAnimationActive={false}/>
                             <CartesianGrid stroke="#ccc"/>
-                            <XAxis dataKey="x" type="number" domain={[0, 100]}/>
+                            <XAxis dataKey="x" type="number"/>
                             <YAxis/>
                         </LineChart>
                     </ResponsiveContainer>
                     <form onSubmit={handleSubmit((values: any) => { 
-                        console.log(values)
-                        setAnimationDuration(values.sleep * 1000 || 1000); 
+                        dropPoints()
                         generatePoints(Object.keys(values).filter((k) => !!values[k]).reduce((a, k) => ({ ...a, [k]: values[k] }), {}) as GeneratePointsData);
+
                     })}>
                         <Stack spacing={3}>
                             <Stack direction="row" spacing={3}>
